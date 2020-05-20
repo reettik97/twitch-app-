@@ -14,15 +14,14 @@ class App extends Component {
       <div className="ui container">
         <BrowserRouter>
           <div>
-          <div><Header/></div>
-            <Route path="/" exact Component={StreamList} />
-            <Route path="/streams/new" exact Component={StreamCreate} />
-            <Route path="/streams/delete" exact Component={StreamDelete} />
-            <Route path="/streams/edit" exact Component={StreamEdit} />
-            <Route path="/streams/show" exact Component={StreamShow} />
+            <Header/>
+            <Route path="/" exact component={StreamList} />
+            <Route path="/streams/new" exact component={StreamCreate} />
+            <Route path="/streams/delete" exact component={StreamDelete} />
+            <Route path="/streams/edit" exact component={StreamEdit} />
+            <Route path="/streams/show" exact component={StreamShow} />
           </div>
         </BrowserRouter>
-        App Component
       </div>
     );
   }
