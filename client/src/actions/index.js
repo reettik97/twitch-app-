@@ -1,3 +1,4 @@
+import history from "../history";
 import {
   SIGN_IN,
   SIGN_OUT,
@@ -22,12 +23,15 @@ export const signOut = () => {
   };
 };
 
-export const createStream = (formValue) => async (dispatch) => {
-  const responce = await streams.post("/streams", formValue);
+export const createStream = (formValue) => async (dispatch , getState) => {
+  const {userId} = getState().auth;
+  const responce = await streams.post("/streams", {...formValue , userId} );
   dispatch({
     type: CREATE_STREAM,
     payload: responce.data,
   });
+  //Do some programatic  navigator to get the user back to the root route
+   history.push("/");
 };
 
 export const fetchStreams = () => async (dispatch) => {
@@ -39,19 +43,21 @@ export const fetchStreams = () => async (dispatch) => {
 };
 
 export const fetchStream = (id) => async (dispatch) => {
-  const responce = await streams.post(`/streams/${id}`);
-  dispatch({
-    type: FETCH_STREAM,
-    payload: responce.data,
-  });
-};
+    const responce = await streams.get(`/streams/${id}`);
+    dispatch({
+      type: FETCH_STREAM,
+      payload: responce.data,
+    });
+  } 
+
 
 export const editStream  = (id , formValue) => async dispatch =>{
-  const responce = await streams.put(`/streams/${id}` , formValue);
+  const responce = await streams.patch(`/streams/${id}` , formValue);
   dispatch({
      type : EDIT_STREAM,
      payload : responce.data
   })
+  history.push("/");
 }
 
 export const deleteStream  = (id) => async dispatch =>{
