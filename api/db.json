@@ -1,22 +1,3 @@
 {
-  "streams": [
-    {
-      "title": "text101",
-      "description": "dis1",
-      "userId": "110801985525351333831",
-      "id": 1
-    },
-    {
-      "title": "edited the stream 2",
-      "description": "looks nice",
-      "userId": "110801985525351333831",
-      "id": 2
-    },
-    {
-      "title": "hello world",
-      "description": "i am fine2",
-      "userId": "110801985525351333831",
-      "id": 3
-    }
-  ]
+  "streams": []
 }
